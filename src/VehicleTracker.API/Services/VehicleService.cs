@@ -38,9 +38,10 @@ namespace VehicleTracker.API.Services
             return await _vehicleRepository.GetCurrentVehiclePosition(vehicleid, deviceid);
         }
 
-        public Task<List<Location>> RetrieveVehiclePositionWithRange(LocationRangeDTO locationRangeDTO)
+        public async Task<List<Location>> RetrieveVehiclePositionWithRange(LocationRangeDTO locationRangeDTO)
         {
-            throw new NotImplementedException();
+            if (locationRangeDTO == null) throw new KeyNotFoundException("location Range paramters are empty");
+            return await _vehicleRepository.GetVehiclePositionRange(locationRangeDTO);
         }
 
         //using Reverse geocoding (address lookup) in Google's Geocoding API

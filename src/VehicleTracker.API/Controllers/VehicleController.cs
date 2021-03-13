@@ -28,7 +28,7 @@ namespace VehicleTracker.API.Controllers
             return Ok(newVehicle);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("recordVehiclePosition")]
         public async Task<ActionResult<Location>> RecordVehiclePosition(LocationDTO location)
         {
@@ -41,6 +41,14 @@ namespace VehicleTracker.API.Controllers
         public async Task<ActionResult<Location>> GetVehicleCurrentPosition(string vehicleId, string deviseId)
         {
             var currentLocation = await _vehicleService.RetrieveCurrentVehiclePosition(vehicleId, deviseId);
+            return Ok(currentLocation);
+        }
+
+        [HttpGet]
+        [Route("getVehiclePositionRange")]
+        public async Task<ActionResult<Location>> GetVehicleCurrentPositionRange(LocationRangeDTO locationRangeDTO)
+        {
+            var currentLocation = await _vehicleService.RetrieveVehiclePositionWithRange(locationRangeDTO);
             return Ok(currentLocation);
         }
     }

@@ -36,11 +36,22 @@ namespace VehicleTracker.API.Repository
             var vehicle = await _vehicles.Find(filter).FirstOrDefaultAsync();
             var location = vehicle.Devices.Select(c => c.Locations).FirstOrDefault().OrderByDescending(d => d.UpdateLocationTimeStamp);
             return location.Take(1).FirstOrDefault();
+            //Notice that i dont have to return the entire mongoDB document
         }
 
-        public Task<List<Location>> GetVehiclePositionRange(LocationRangeDTO locationRangeDTO)
+        public async Task<List<Location>> GetVehiclePositionRange(LocationRangeDTO locationRangeDTO)
         {
-            throw new NotImplementedException();
+            var filter = Builders<Vehicle>.Filter.And(
+            Builders<Vehicle>.Filter.Where(x => x.Id == locationRangeDTO.VehicleId),
+            Builders<Vehicle>.Filter.ElemMatch(x => x.Devices, d => d.Id == locationRangeDTO.DeviceId));
+
+            var vehicle = await _vehicles.Find(filter).FirstOrDefaultAsync();
+            var locations = vehicle.Devices.Select(c => c.Locations)
+                                            .FirstOrDefault()
+                                            .Where(c => 
+                                                    c.UpdateLocationTimeStamp >= locationRangeDTO.StartDate &&
+                                                    c.UpdateLocationTimeStamp<= locationRangeDTO.EndDate);
+            return locations.ToList();
         }
 
         public async Task<Location> RecordVehiclePosition(LocationDTO vehiclePosition)
