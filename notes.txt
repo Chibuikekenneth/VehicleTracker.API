@@ -1,0 +1,25 @@
+//initial (Post)
+register a {vehicle} => vehicle attribute
+record its {position} => position attributes
+
+//every 30 seconds, (put) update the api
+update the {Position} table => position attribute 
+
+//using both EF core and daper, (basically for migration and fast queries respectively) => I ended up using Mongo db and mongo Driver for C#. Reason beign that i was considering scalability and speed as well, considering we are having so many writes in the database. Also, condering the fact that you can easily add more properties to either the vehicle, devise or location object easily, without the need for migaration
+
+//Note: the most important factor i considered before using mongo DB is Data Model Extensibility, where you can easily add any object to your data model, without the need for migration of table creation, and still retrieve your values 
+
+//, any authenticated administratorshould be able to
+retrieve current {position} of a vehicle ==> latest position based on most recent time
+retrieve current {position} of a vehicle during a certain time (start time - end Time)
+
+
+//We need to put into consideration that we are doing more of a write here than actual read
+//We dont want to keep updating locations in a particular collection, and doing it for multiple collections of vehicle.
+//Imaging 10,000 vehicle objects, each of them with a devise object, and then a long list of locations objects (would probab;y be too messy in the database)
+//So we segregate this, and add a locations collections which store the (devise Id)
+
+//initial approach i wanted to use when recording a vehicle
+//There are multiple ways to this, and since i'm using Mongo DB, its usually best to store as an object
+        //But in other not to make it messy, i'm going to create a new collection for location
+        //Note that this Method is just to Record a Vehicle
