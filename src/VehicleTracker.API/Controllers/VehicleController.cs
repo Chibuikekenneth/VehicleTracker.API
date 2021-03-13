@@ -40,8 +40,8 @@ namespace VehicleTracker.API.Controllers
         [Route("getVehiclePosition")]
         public async Task<ActionResult<Location>> GetVehicleCurrentPosition(string vehicleId, string deviseId)
         {
-            var newLocation = await _vehicleService.RetrieveCurrentVehiclePosition(vehicleId, deviseId);
-            return Ok(newLocation);
+            var currentLocation = await _vehicleService.RetrieveCurrentVehiclePosition(vehicleId, deviseId);
+            return Ok(currentLocation);
         }
     }
 }

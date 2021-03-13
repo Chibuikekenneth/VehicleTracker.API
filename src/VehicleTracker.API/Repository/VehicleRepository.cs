@@ -33,7 +33,7 @@ namespace VehicleTracker.API.Repository
             Builders<Vehicle>.Filter.Where(x => x.Id == vehicleId),
             Builders<Vehicle>.Filter.ElemMatch(x => x.Devices, d => d.Id == deviceId));
 
-            var vehicle = _vehicles.Find(filter).FirstOrDefault();
+            var vehicle = await _vehicles.Find(filter).FirstOrDefaultAsync();
             var location = vehicle.Devices.Select(c => c.Locations).FirstOrDefault().OrderByDescending(d => d.UpdateLocationTimeStamp);
             return location.Take(1).FirstOrDefault();
         }
