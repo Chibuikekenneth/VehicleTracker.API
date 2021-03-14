@@ -31,10 +31,10 @@ $ dotnet build
 **Note:** Before running the Project, make sure you have MongoDB Setup or installed in your computer. 
 
 I'm using MongoDB, running as a docker container. 
-![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerAPI.PNG?raw=true "Title")
+![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerDocker.PNG?raw=true "Title")
 
 I'm also using Robo 3T as my Database GUI.
-![Alt text](Images/trackerDB.png?raw=true "Title")
+![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerDB.PNG?raw=true "Title")
 
 **Note:** If you're using docker, be sure to map the Port with same as the one in the connection string
 
@@ -45,4 +45,4 @@ Once the database is up and connected successfully, Just go ahead and run the ap
 dotnet run
 ```
  Navigate to the swagger generated API documentation
- ![Alt text](Images/trackerAPI.png?raw=true "Title")
+ ![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerAPI.PNG?raw=true "Title")
