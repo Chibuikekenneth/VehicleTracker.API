@@ -48,4 +48,17 @@ dotnet run
  ![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerAPI.PNG?raw=true "Title")
 
 
-## Thought processes and Notes i Jotted when writing this API
+
+## Here are some Thought processes and Notes I Jotted when writing this API
+
+##### Database / scalability
+I started with using both EF core and dapper, (basically using EF core for migration and Dapper for fast/raw queries respectively) => I ended up using Mongo db (NOSQL) and mongo Driver for C#. Reason beign that i was considering scalability and speed as well. considering we are having so many writes in the database. Although they all have their tradeOffs
+
+* NOSQL Databases like Mongo DB are very easy to scale, especially horizontally
+* Enables faster access of the data due to its nature of using internal memory for storage.
+* MongoDB sacrifices structure for greater speed
+
+##### Data Extensibility
+Also, condering the fact that you can easily add more properties to either the vehicle(Like fuel, Speed etc), devise or location object easily, without the need for migaration. these are some of the few benefits and reason i used MongoDB
+
+**Note** Note: The most important factor i considered before using mongo DB is Data Model Extensibility, where you can easily add any object to your data model, without the need for migration or table creation, and still retrieve your values. Moreover, MongoDB is 
