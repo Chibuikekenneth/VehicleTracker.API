@@ -9,7 +9,7 @@ This Solution targets the ASP.NET Core 5.0.
 
 Clone the Project
 ```
-$ git clone etc
+$ git clone https://github.com/Chibuikekenneth/VehicleTracker.API.git
 ```
 Navigate to the project directory
 ```
@@ -46,3 +46,6 @@ dotnet run
 ```
  Navigate to the swagger generated API documentation
  ![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerAPI.PNG?raw=true "Title")
+
+
+## Thought processes and Notes i Jotted when writing this API
