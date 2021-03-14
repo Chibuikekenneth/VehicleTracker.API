@@ -46,7 +46,7 @@ dotnet run
 ```
  Navigate to the swagger generated API documentation `localhost:5001/swagger/index.html`
  ![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerAPI.PNG?raw=true "Title")
-
+...
 
 
 
