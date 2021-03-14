@@ -31,7 +31,7 @@ $ dotnet build
 **Note:** Before running the Project, make sure you have MongoDB Setup or installed in your computer. 
 
 I'm using MongoDB, running as a docker container. 
-![Alt text](Images/trackerDocker.png?raw=true "Title")
+![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerAPI.PNG?raw=true "Title")
 
 I'm also using Robo 3T as my Database GUI.
 ![Alt text](Images/trackerDB.png?raw=true "Title")
