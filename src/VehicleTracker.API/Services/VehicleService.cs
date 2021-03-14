@@ -60,7 +60,8 @@ namespace VehicleTracker.API.Services
             var result = await response.Content.ReadAsStringAsync();
             Rootobject deserialized = JsonConvert.DeserializeObject<Rootobject>(result);
 
-            if (deserialized.results.Count() < 1) throw new InvalidOperationException("Matching Name locality not found, Check your API KEY or any other related data");
+            //if (deserialized.results.Count() < 1) throw new InvalidOperationException("Matching Name locality not found, Check your API KEY or any other related data");
+            if (deserialized.results.Count() < 1) return "Matching Name locality not found, Check your API KEY or any other related data";
 
             return deserialized.results.Select(x => new AddressComponent
             {

@@ -56,7 +56,7 @@ namespace VehicleTracker.API.Controllers
             var currentLocation = await _vehicleService.RetrieveCurrentVehiclePosition(vehicleId, deviseId);
 
             //Get Matching locality using Google Map's API
-            var matchingLocalityName = _vehicleService.GoogleMatchingLocality(currentLocation.Latitude + "," + currentLocation.Longitude);
+            var matchingLocalityName = await _vehicleService.GoogleMatchingLocality(currentLocation.Latitude + "," + currentLocation.Longitude);
             return Ok(new
             {
                 Longitude = currentLocation.Longitude,

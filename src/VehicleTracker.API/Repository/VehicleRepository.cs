@@ -81,6 +81,7 @@ namespace VehicleTracker.API.Repository
                 RegistrationNumber = vehicle.RegistrationNumber,
                 Make = vehicle.Make,
                 Model = vehicle.Model,
+                year = vehicle.year,
                 Devices = new List<Device>
                 {
                     new Device
