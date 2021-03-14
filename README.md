@@ -30,14 +30,19 @@ $ dotnet build
 ## Database Setup
 **Note:** Before running the Project, make sure you have MongoDB Setup or installed in your computer. 
 
-I'm using MongoDB, running as a docker container, and i'm also using Robo 3T as my Database GUI
+I'm using MongoDB, running as a docker container. 
+![Alt text](Images/trackerDocker.png?raw=true "Title")
+
+I'm also using Robo 3T as my Database GUI.
+![Alt text](Images/trackerDB.png?raw=true "Title")
 
 **Note:** If you're using docker, be sure to map the Port with same as the one in the connection string
 
-//IMages
 
 ## Running the Project
 Once the database is up and connected successfully, Just go ahead and run the application.
 ```
 dotnet run
 ```
+ Navigate to the swagger generated API documentation
+ ![Alt text](Images/trackerAPI.png?raw=true "Title")
