@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,11 @@ namespace VehicleTracker.API.Services
     public class VehicleService : IVehicleService
     {
         private readonly IVehicleRepository _vehicleRepository;
-        public VehicleService(IVehicleRepository vehicleRepository)
+        private readonly IConfiguration _configuration;
+        public VehicleService(IVehicleRepository vehicleRepository, IConfiguration configuration)
         {
             _vehicleRepository = vehicleRepository;
+            _configuration = configuration;
         }
 
         public async Task<Vehicle> RegisterVehicle(VehicleDTO vehicle)
@@ -45,17 +48,19 @@ namespace VehicleTracker.API.Services
         }
 
         //using Reverse geocoding (address lookup) in Google's Geocoding API
-        public async Task<string> GetMatchingLocality(string position)
+        public async Task<string> GoogleMatchingLocality(string location)
         {
             // Provide api key code
-            string YOUR_API_KEY = "";
-            string requestUri = string.Format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?latlng={0}&key={1}", Uri.EscapeDataString(position), YOUR_API_KEY);
+            string YOUR_API_KEY = _configuration["GoogleMap:ApiKey"];
+            string requestUri = string.Format("https://maps.googleapis.com/maps/api/geocode/json?latlng={0}&key={1}", Uri.EscapeDataString(location), YOUR_API_KEY);
 
             var client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(requestUri);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
             Rootobject deserialized = JsonConvert.DeserializeObject<Rootobject>(result);
+
+            if (deserialized.results.Count() < 1) throw new InvalidOperationException("Matching Name locality not found, Check your API KEY or any other related data");
 
             return deserialized.results.Select(x => new AddressComponent
             {

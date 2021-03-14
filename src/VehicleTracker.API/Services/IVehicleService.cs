@@ -12,6 +12,6 @@ namespace VehicleTracker.API.Services
         Task<Location> RecordVehiclePosition(LocationDTO vehiclePosition);
         Task<Location> RetrieveCurrentVehiclePosition(string vehicleId, string deviceId);
         Task<List<Location>> RetrieveVehiclePositionWithRange(LocationRangeDTO locationRangeDTO);
-        Task<string> GetMatchingLocality(string position);
+        Task<string> GoogleMatchingLocality(string position);
     }
 }

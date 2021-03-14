@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AspNetCore.Identity.Mongo;
 using AspNetCore.Identity.Mongo.Model;
@@ -40,18 +42,6 @@ namespace VehicleTracker.API
             services.AddSingleton<IVTrackerDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<VTrackerDatabaseSettings>>().Value);
 
-            // Configuring MongoDB Identity
-            //services.AddIdentityMongoDbProvider<MongoUser, MongoRole>(identity =>
-            //{
-            //    identity.Password.RequiredLength = 8;
-            //    // other options
-            //},
-            //mongo =>
-            //{
-            //    mongo.ConnectionString = "mongodb://127.0.0.1:27017/identity";
-            //// other options
-            //});
-
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
 
@@ -59,6 +49,11 @@ namespace VehicleTracker.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VehicleTracker.API", Version = "v1" });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 
