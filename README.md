@@ -62,7 +62,7 @@ I started with using both Entity framework core and dapper (SQL Server Database)
 #### Data Extensibility
 Also, condering the fact that you can easily add more properties to either the vehicle(Like fuel, Speed etc), devise or location object easily, without the need for migarations, or manually creating a new column In the database. These are some of the few benefits and reasons I used MongoDB
 
-**Note** Note: one important factor I considered before using mongo DB is Data Model Extensibility, where you can easily add any object to your data model, without the need for migration or table creation, and still retrieve your values. Moreover, MongoDB is 
+**Note** Note: one important factor I considered before using mongo DB is Data Model Extensibility, where you can easily add any object to your data model, without the need for migration or table creation, and still retrieve your values. 
 
 #### Security and Exceptions
 As Stated in the requirement, there are checks which ensure that a devise does not update the location/position of another vehicle.
