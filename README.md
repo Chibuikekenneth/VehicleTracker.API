@@ -40,11 +40,11 @@ I'm also using Robo 3T as my Database GUI.
 
 
 ## Running the Project
-Once the database is up and connected successfully, Just go ahead and run the application.
+Once the database is up and connected successfully, Just go ahead and run the application. (If you're using Visual studio, just click on the play Button)
 ```
 dotnet run
 ```
- Navigate to the swagger generated API documentation
+ Navigate to the swagger generated API documentation `localhost:5001/swagger/index.html`
  ![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerAPI.PNG?raw=true "Title")
 
 
