@@ -36,7 +36,7 @@ I'm using MongoDB, running as a docker container.
 I'm also using Robo 3T as my Database GUI.
 ![Alt text](https://github.com/Chibuikekenneth/VehicleTracker.API/blob/main/Images/trackerDB.PNG?raw=true "Title")
 
-**Note:** If you're using docker, be sure to map the Port with same as the one in the connection string
+**Note:** If you're using docker, be sure to map the Port with same as the one in the connection string of the appSettings.json
 
 
 ## Running the Project
